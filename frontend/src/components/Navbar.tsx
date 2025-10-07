@@ -41,8 +41,8 @@ const Navbar = () => {
     { path: "/analytics", label: "📈 Analytics", icon: FaChartLine },
     { path: "/favorites", label: "⭐ Favorites", icon: FaHeart },
     { path: "/emergency", label: "🚨 Emergency", icon: FaExclamationTriangle },
-    { path: "/contact", label: "✉️ Contact", icon: FaEnvelope },
-    { path: "/about", label: "ℹ️ About Us", icon: FaInfoCircle },
+    { path: "/contact-owner", label: "✉️ Contact", icon: FaEnvelope },
+    { path: "/about-us", label: "ℹ️ About Us", icon: FaInfoCircle },
     { path: "/login", label: "🔐 Login", icon: FaSignInAlt }
   ];
 
@@ -68,39 +68,37 @@ const Navbar = () => {
               </span>
             </Link>
 
-           {/* Desktop Navigation Links - ALL SECTIONS VISIBLE */}
-<div className="hidden lg:flex items-center space-x-1 flex-1 justify-center px-4">
-  {navLinks.map((link) => {
-    const Icon = link.icon;
-    const active = isActive(link.path);
-    
-    return (
-      <Link
-        key={link.path}
-        to={link.path}
-        className="relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center space-x-1 group"
-      >
-        <span className={`transition-all duration-300 whitespace-nowrap ${
-          active
-            ? "text-green-600 dark:text-green-400"
-            : "text-gray-700 dark:text-gray-300 group-hover:text-green-600 dark:group-hover:text-green-400"
-        }`}>
-          {link.label}
-        </span>
-        
-        {/* Animated underline */}
-        <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-300 ${
-          active 
-            ? "w-full" 
-            : "w-0 group-hover:w-full"
-        }`}></span>
-        
-        {/* Hover background */}
-        <span className="absolute inset-0 rounded-lg bg-green-50 dark:bg-green-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-      </Link>
-    );
-  })}
-</div>
+            {/* Desktop Navigation Links - ALL SECTIONS VISIBLE */}
+            <div className="hidden lg:flex items-center space-x-1 flex-1 justify-center px-4">
+              {navLinks.map((link) => {
+                const Icon = link.icon;
+                const active = isActive(link.path);
+
+                return (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center space-x-1 group"
+                  >
+                    <span className={`transition-all duration-300 whitespace-nowrap ${active
+                        ? "text-green-600 dark:text-green-400"
+                        : "text-gray-700 dark:text-gray-300 group-hover:text-green-600 dark:group-hover:text-green-400"
+                      }`}>
+                      {link.label}
+                    </span>
+
+                    {/* Animated underline */}
+                    <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-300 ${active
+                        ? "w-full"
+                        : "w-0 group-hover:w-full"
+                      }`}></span>
+
+                    {/* Hover background */}
+                    <span className="absolute inset-0 rounded-lg bg-green-50 dark:bg-green-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  </Link>
+                );
+              })}
+            </div>
 
             {/* Right Side - Profile Icon, Theme Toggle & Hamburger Menu */}
             <div className="flex items-center space-x-2 sm:space-x-3">
@@ -153,9 +151,8 @@ const Navbar = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-72 sm:w-80 bg-white dark:bg-gray-800 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out overflow-y-auto ${
-          isSidebarOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed top-0 right-0 h-full w-72 sm:w-80 bg-white dark:bg-gray-800 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out overflow-y-auto ${isSidebarOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         {/* Sidebar Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
@@ -181,23 +178,21 @@ const Navbar = () => {
           {navLinks.map((link) => {
             const Icon = link.icon;
             const active = isActive(link.path);
-            
+
             return (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={closeSidebar}
-                className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 ${
-                  active
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 ${active
                     ? "text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30 shadow-sm border-l-4 border-green-500"
                     : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-green-600 dark:hover:text-green-400"
-                }`}
+                  }`}
               >
-                <Icon className={`w-5 h-5 flex-shrink-0 ${
-                  active ? "text-green-500" : "text-gray-500 dark:text-gray-400"
-                }`} />
+                <Icon className={`w-5 h-5 flex-shrink-0 ${active ? "text-green-500" : "text-gray-500 dark:text-gray-400"
+                  }`} />
                 <span className="text-base">{link.label}</span>
-                
+
                 {active && (
                   <span className="ml-auto">
                     <span className="w-2 h-2 bg-green-500 rounded-full inline-block animate-pulse"></span>
